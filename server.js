@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require('express');
 const connectDB = require('./config/db');
 require('dotenv').config();
@@ -7,6 +8,11 @@ const PORT=5000
 
 const app = express();
 app.use(express.json());
+app.use(cors({
+    origin: "*", // your frontend origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // allow specific methods if needed
+    credentials: true               // if you're sending cookies/auth
+  }));
 connectDB();
 
 
