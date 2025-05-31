@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 require('dotenv').config();
 const authRoutes= require("./routes/auth")
 const protectedRoutes = require("./routes/protected")
+const productRoutes = require("./routes/Products")
 const PORT=5000
 
 const app = express();
@@ -18,6 +19,7 @@ connectDB();
 
 app.use("/api",authRoutes);
 app.use("/api/protected",protectedRoutes);
+app.use("/api/products",productRoutes);
 
 app.listen(PORT,()=>{
     console.log(`Server running successfully on http://localhost:${PORT}`);
